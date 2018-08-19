@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <div class="card card-body">
+    <form novalidate (ngSubmit)="onAdd(form)" #form="ngForm">
+      <div class="form-group">
+        <label for="userId">UserId</label>
+        <input type="number"
+               name="userId"
+               id="userId"
+               class="form-control"
+               [(ngModel)]="todo.userId"
+               #itemUserId="ngModel"
+               [ngClass]="{'is-invalid': itemUserId.errors && form.submitted}"
+               required
+        >
+        <div class="invalid-feedback" [hidden]="!itemUserId.errors?.required">UserId required</div>
+      </div>
+      <div class="form-group">
+        <label for="id">Id</label>
+        <input type="text"
+               name="id"
+               id="id"
+               class="form-control"
+               [(ngModel)]="todo.id"
+               (ngModelChange)="todo.id=$event"
+               readonly
+        >
+      </div>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text"
+               name="title"
+               id="title"
+               class="form-control"
+               [(ngModel)]="todo.title"
+               #itemTitle="ngModel"
+               [ngClass]="{'is-invalid': itemTitle.errors && form.submitted}"
+               required
+        >
+        <div class="invalid-feedback" [hidden]="!itemTitle.errors?.required">Title required</div>
+      </div>
+      <div class="form-group">
+        <label for="completed">Completed</label>
+        <select class="custom-select form-control"
+                name="completed"
+                id="completed"
+                [(ngModel)]="todo.completed"
+                required>
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success">Add</button>
+    </form>
+  </div>
+</div>

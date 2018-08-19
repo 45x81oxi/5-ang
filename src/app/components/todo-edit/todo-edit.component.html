@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <div class="card card-body">
+    <form>
+      <div class="form-group">
+        <label for="userId">UserId</label>
+        <input type="text"
+               name="userId"
+               id="userId"
+               class="form-control"
+               [ngModel]="todo?.userId"
+               (ngModelChange)="todo.userId=$event"
+               required
+               [readonly]="isReadOnly"
+        >
+      </div>
+      <div class="form-group">
+        <label for="id">Id</label>
+        <input type="text"
+               name="id"
+               id="id"
+               class="form-control"
+               [ngModel]="todo?.id"
+               (ngModelChange)="todo.id=$event"
+               required
+               [readonly]="isReadOnly"
+        >
+      </div>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text"
+               name="title"
+               id="title"
+               class="form-control"
+               [ngModel]="todo?.title"
+               (ngModelChange)="todo.title=$event"
+               required
+               [readonly]="isReadOnly"
+        >
+      </div>
+      <div class="form-group">
+        <label for="completed">Completed</label>
+        <input type="text"
+               name="completed"
+               id="completed"
+               class="form-control"
+               [ngModel]="todo?.completed"
+               (ngModelChange)="todo.completed=$event"
+               required
+               [readonly]="isReadOnly"
+        >
+      </div>
+      <button class="btn btn-primary" *ngIf="isReadOnly" (click)="isReadOnly= false">Edit</button>
+      <button class="btn btn-primary" *ngIf="!isReadOnly" (click)="onEdit()">Save</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <div>
+    <button routerLink="todo-add" class="btn btn-primary float-right mb-5">Add new todo</button>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>userId</th>
+        <th>id</th>
+        <th>title</th>
+        <th>completed</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let todo of todos; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{todo.userId}}</td>
+        <td>{{todo.id}}</td>
+        <td>{{todo.title}}</td>
+        <td>{{todo.completed}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="onDelete(todo.id)"> Delete</button>
+        </td>
+        <td>
+          <button routerLink="/todo/{{todo.id}}" class="btn btn-primary">Edit</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
